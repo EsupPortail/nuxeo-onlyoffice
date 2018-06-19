@@ -5,38 +5,6 @@
 	<extension target="org.nuxeo.ecm.platform.actions.ActionService"
 		point="actions">
 
-		<action id="onlyofficeEdit" link="#{onlyOfficeActions.editLink}"
-			label="onlyoffice.edit" type="bare_link" icon="/icons/edit-32.png">
-			<category>DRIVE_EDIT</category>
-			<filter id="use-onlyoffice">
-				<rule grant="true">
-					<permission>Write</permission>
-					<condition>#{onlyOfficeActions.managed}</condition>
-				</rule>
-			</filter>
-			<filter-id>onlyoffice-can-edit</filter-id>
-			<filter-id>onlyoffice-confirmation-not-needed</filter-id>
-			<filter-id>onlyofficeAvailableForuser</filter-id>
-		</action>
-
-		<action id="onlyofficeEditWithConfirm" link="#{onlyOfficeActions.editLink}"
-			label="onlyoffice.edit" type="bare_link" icon="/icons/edit-32.png">
-			<category>DRIVE_EDIT</category>
-			<filter id="use-onlyoffice">
-				<rule grant="true">
-					<permission>Write</permission>
-					<condition>#{onlyOfficeActions.managed}</condition>
-				</rule>
-			</filter>
-			<filter-id>onlyoffice-can-edit</filter-id>
-			<filter-id>onlyoffice-confirmation-needed</filter-id>
-			<filter-id>onlyofficeAvailableForuser</filter-id>
-			<properties>
-				<property name="confirm">return confirm('Le document sera converti dans un format plus récent (disponibilité du document original dans l’historique)')</property>
-			</properties>
-		</action>
-
-
 		<action id="onlyofficeCoEdit" link="#{onlyOfficeActions.coEditLink}"
 			label="onlyoffice.coedit" type="bare_link" icon="/icons/edit_user-32.png">
 			<category>DRIVE_EDIT</category>
