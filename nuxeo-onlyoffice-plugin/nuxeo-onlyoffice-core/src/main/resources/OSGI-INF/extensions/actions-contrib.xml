@@ -7,7 +7,7 @@
 
 		<action id="onlyofficeCoEdit" link="#{onlyOfficeActions.coEditLink}"
 			label="onlyoffice.coedit" type="bare_link" icon="/icons/edit_user-32.png">
-			<category>DRIVE_EDIT</category>
+			<category>DOCUMENT_UPPER_ACTION</category>
 			<filter id="use-onlyoffice">
 				<rule grant="true">
 					<permission>Write</permission>
@@ -21,7 +21,7 @@
 
 		<action id="onlyofficeCoEditWithConfirm" link="#{onlyOfficeActions.coEditLink}"
 			label="onlyoffice.coedit" type="bare_link" icon="/icons/edit_user-32.png">
-			<category>DRIVE_EDIT</category>
+			<category>DOCUMENT_UPPER_ACTION</category>
 			<filter id="use-onlyoffice">
 				<rule grant="true">
 					<permission>Write</permission>
