@@ -122,6 +122,12 @@ public class OnlyofficeConfig
 	{
 		JSONObject editor = new JSONObject();
 		editor.accumulate(ONLYOFFICE_CALLBACK_URL_CONFIG, onlyOfficeDocument.getCallbackUrl(getSessionToken(onlyOfficeDocument.getSessionPrincipal())));
+		if (onlyOfficeDocument.hasSharingEditPermission()) {
+		    // rely on apache conf: 
+		    //   ProxyPass /nuxeo/embed/ ajp://localhost:8009/nuxeo/
+		    // plus some tweaks to keep only the TAB_PERMISSIONS part
+		    editor.accumulate("sharingSettingsUrl", onlyOfficeDocument.getGobackUrl(getGobackResolver()).replace("/nuxeo/", "/nuxeo/embed/") + "?tabIds=:TAB_PERMISSIONS");
+		}
 		editor.accumulate(ONLYOFFICE_LANG_CONFIG, "fr");
 		editor.accumulate(ONLYOFFICE_MODE_CONFIG, onlyOfficeDocument.isEditModeEnabled() ? "edit" : "view");
 

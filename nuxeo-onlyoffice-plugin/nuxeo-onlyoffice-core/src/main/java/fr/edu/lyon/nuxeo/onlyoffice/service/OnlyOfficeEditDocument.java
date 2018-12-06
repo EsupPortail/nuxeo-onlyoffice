@@ -114,6 +114,12 @@ public class OnlyOfficeEditDocument extends AbstractOnlyOfficeDocument
 	public boolean hasUserEditPermission()
 	{
 		return session.hasPermission(doc.getRef(), SecurityConstants.WRITE);
+    }
+    
+	@Override
+	public boolean hasSharingEditPermission()
+	{
+		return session.hasPermission(doc.getRef(), SecurityConstants.WRITE_SECURITY);
 	}
 
 	@Override

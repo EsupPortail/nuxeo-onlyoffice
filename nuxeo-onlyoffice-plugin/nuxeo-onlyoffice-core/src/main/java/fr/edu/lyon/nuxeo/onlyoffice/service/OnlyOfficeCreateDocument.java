@@ -89,6 +89,12 @@ public class OnlyOfficeCreateDocument extends AbstractOnlyOfficeDocument
 	}
 
 	@Override
+	public boolean hasSharingEditPermission()
+	{
+		return session.hasPermission(parent.getRef(), SecurityConstants.WRITE_SECURITY);
+	}
+
+	@Override
 	public String getDocumentUrl(String sessionToken)
 	{
 		return new StringBuilder(context.getCallbackBaseUrl()).append(SITE_ONLYOFFICE_TEMPLATE).append(filetype)

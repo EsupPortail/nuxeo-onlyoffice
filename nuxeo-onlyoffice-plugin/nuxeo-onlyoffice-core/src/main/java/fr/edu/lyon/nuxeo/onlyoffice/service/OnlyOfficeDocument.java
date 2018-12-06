@@ -64,6 +64,12 @@ public interface OnlyOfficeDocument
 	boolean hasUserEditPermission();
 
 	/**
+	 * Les droits sur le document peuvent-ils être modifiés
+	 * @return
+	 */
+	boolean hasSharingEditPermission();
+
+	/**
 	 * URL d'accès au document avec intégration d'un token JWT
 	 * @param sessionToken
 	 * @return
