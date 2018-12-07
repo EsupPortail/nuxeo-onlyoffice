@@ -118,6 +118,28 @@ public class OnlyOfficeActionsBean implements Serializable
 		return false;
 	}
 
+              public boolean canManaged(DocumentModel doc)
+        {
+               
+                if (doc==null)
+                {
+                        return false;
+                }
+
+                Blob blob=getDocumentBlob(doc);
+                boolean isFile = !doc.hasFacet("Folderish") && blob!=null && blob.getFilename() != null;
+
+                if (isFile)
+                {
+                        return FileUtility.isManaged(blob.getFilename());
+                }
+
+                return false;
+        }
+
+
+
+
 	public boolean needConfirmation()
 	{
 		DocumentModel currentDocument = navigationContext.getCurrentDocument();

@@ -7,48 +7,25 @@
 
 		<action id="onlyofficeCoEdit" link="#{onlyOfficeActions.coEditLink}"
 			label="onlyoffice.coedit" type="bare_link" icon="/icons/edit_user-32.png">
-			<category>DOCUMENT_UPPER_ACTION</category>
-			<filter id="use-onlyoffice">
-				<rule grant="true">
-					<permission>Write</permission>
-					<condition>#{onlyOfficeActions.managed}</condition>
-				</rule>
-			</filter>
+			<category>BLOB_ACTIONS</category>
+			
+                        <filter-id>use-onlyoffice</filter-id>
 			<filter-id>onlyoffice-can-edit</filter-id>
 			<filter-id>onlyoffice-confirmation-not-needed</filter-id>
 			<filter-id>onlyofficeAvailableForuser</filter-id>
 		</action>
 
-		<action id="onlyofficeCoEditWithConfirm" link="#{onlyOfficeActions.coEditLink}"
-			label="onlyoffice.coedit" type="bare_link" icon="/icons/edit_user-32.png">
-			<category>DOCUMENT_UPPER_ACTION</category>
-			<filter id="use-onlyoffice">
-				<rule grant="true">
-					<permission>Write</permission>
-					<condition>#{onlyOfficeActions.managed}</condition>
-				</rule>
-			</filter>
-			<filter-id>onlyoffice-can-edit</filter-id>
-			<filter-id>onlyoffice-confirmation-needed</filter-id>
-			<filter-id>onlyofficeAvailableForuser</filter-id>
-			<properties>
-				<property name="confirm">return confirm('Le document sera converti dans un format plus récent (disponibilité du document original dans l’historique)')</property>
-			</properties>
-		</action>
-
-		<action id="showFancyBoxPreview" order="50" type="fancybox"
-			label="label.document.preview" icon="/icons/contextual_menu/preview.png">
-			<category>DOCUMENT_UPPER_ACTION</category>
-			<filter-id>view_preview</filter-id>
-			<filter-id>not_folder</filter-id>
-			<filter-id>not_anonymous</filter-id>
-			<filter-id>onlyoffice-can-edit</filter-id>
-			<properties>
-				<property name="iframe">#{onlyOfficeActions.previewLink}</property>
-				<property name="ajaxSupport">true</property>
-			</properties>
-		</action>
-
+                 <action id="onlyofficeCoEditListing" link="#{onlyOfficeActions.getCoEditLink(actionContextDocument)}"
+                        label="onlyoffice.coedit" type="bare_link" icon="/icons/edit_user-32.png">
+                        <category>BLOB_ACTIONS_LISTING</category>
+                        
+                        <filter-id>use-onlyoffice-list</filter-id>
+                        <filter-id>onlyoffice-can-edit</filter-id> 
+                        <filter-id>onlyoffice-confirmation-not-needed</filter-id>
+                        <filter-id>onlyofficeAvailableForuser</filter-id>                         
+                       
+                </action>
+               
 		<action id="CREATE_DOCUMENT_ONLYOFFICE" link="redirect_onlyoffice"
 			order="0" label="command.create">
 			<category>CREATE_DOCUMENT_FORM_ONLYOFFICE</category>
@@ -90,5 +67,20 @@
 				<condition>#{onlyOfficeActions.availableForUser}</condition>
 			</rule>
 		</filter>
+                  
+                 <filter id="use-onlyoffice">
+                         <rule grant="true">
+                              <permission>Write</permission>
+                              <condition>#{onlyOfficeActions.managed}</condition>
+                         </rule>
+                 </filter>
+
+                 <filter id="use-onlyoffice-list">
+                        <rule grant="true">
+                             <condition>#{onlyOfficeActions.canManaged(actionContextDocument)}</condition>
+                        </rule>
+                      
+                 </filter>
+
 	</extension>
 </component>
