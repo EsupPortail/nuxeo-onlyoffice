@@ -4,6 +4,39 @@
 	<require>org.nuxeo.ecm.platform.preview.actions</require>
 	<extension target="org.nuxeo.ecm.platform.actions.ActionService"
 		point="actions">
+		
+                <action id="onlyofficeCoEditdh" link="#{onlyOfficeActions.coEditLink}"
+                        label="onlyoffice.coedit" type="bare_link" icon="/icons/edit-32.png">
+                        <category>BREADCRUMB_ACTIONS</category>
+                        <filter id="use-onlyoffice">
+                                <rule grant="true">
+                                        <permission>Write</permission>
+                                        <condition>#{onlyOfficeActions.managed}</condition>
+                                </rule>
+                        </filter>
+                        <filter-id>onlyoffice-can-edit</filter-id>
+                        <filter-id>onlyofficeAvailableForuser</filter-id>
+                        <properties>
+                                <property name="target">_blank</property>
+                        </properties>
+                </action>
+
+                <action id="onlyofficeCoEditba" link="#{onlyOfficeActions.coEditLink}"
+                        label="onlyoffice.coedit" type="bare_link" icon="/icons/edit-32.png">
+                        <category>BLOB_ACTIONS</category>
+                        <filter id="use-onlyoffice">
+                                <rule grant="true">
+                                        <permission>Write</permission>
+                                        <condition>#{onlyOfficeActions.managed}</condition>
+                                </rule>
+                        </filter>
+                        <filter-id>onlyoffice-can-edit</filter-id>
+                        <filter-id>onlyofficeAvailableForuser</filter-id>
+                        <properties>
+                                <property name="target">_blank</property>
+                        </properties>
+                </action>
+
 
 		<action id="onlyofficeEdit" link="#{onlyOfficeActions.editLink}"
 			label="onlyoffice.edit" type="bare_link" icon="/icons/edit-32.png">
